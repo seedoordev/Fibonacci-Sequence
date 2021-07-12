@@ -39,6 +39,12 @@ class ResultNumberSerializer(serializers.ModelSerializer):
         model = ResultNumber
         fields = ("number",)
 
+    def to_representation(self, instance):
+        result = super(ResultNumberSerializer, self).to_representation(instance)
+        for key in result:
+            number = int(result[key])
+        return number
+
 
 class FibonacciRetrieveSerializer(serializers.ModelSerializer):
     operation_time = serializers.SerializerMethodField('get_operation_time')

@@ -20,7 +20,7 @@ services:
   app:
     restart: always
     build:
-      context: ../jetstyletask
+      context: ../Fibonacci-Sequence-API
     ports:
       - "8000:8000"
     env_file:
@@ -32,7 +32,7 @@ services:
   worker:
     restart: always
     build:
-      context: ../jetstyletask
+      context: ../Fibonacci-Sequence-API
     command: ['celery', '--workdir=./testtask', '-A', 'config', 'worker' ]
 
 volumes:
